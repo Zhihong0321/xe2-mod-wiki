@@ -81,3 +81,13 @@ One early successful content-mod test was the `Improved Tactical Module` concept
 - effect: `10 weight`
 
 The important lesson from that work was not just the item itself. The lesson was that detection became reliable only after the package lived inside the proper manual-mod folder.
+
+## Starter-Template Reminder
+
+Another later content-mod lesson is that a correct profile edit does not always guarantee that a fresh campaign uses the changed value immediately.
+
+For example, the starting Skyhawk dropship capacity test only fully worked after patching the starter-template paths directly, not just the shared aircraft profile.
+
+See:
+
+- [Dropship Capacity And Starting Pools](../05-patterns/dropship-capacity-and-starting-pools.md)

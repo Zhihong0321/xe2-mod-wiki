@@ -43,6 +43,7 @@ This repo records local implementation evidence and working patterns. The offici
 - [Passive Skill System](docs/04-systems/passive-skill-system.md)
 - [Save Persistence Findings](docs/04-systems/save-persistence.md)
 - [Kill-Count Driven Sync Pattern](docs/05-patterns/kill-count-driven-sync.md)
+- [Dropship Capacity And Starting Pools](docs/05-patterns/dropship-capacity-and-starting-pools.md)
 - [Startup Safety And Recovery](docs/06-safety/startup-and-recovery.md)
 - [UI Component Probe Implementation History](docs/07-implementations/ui-component-probe.md)
 - [Open Questions And Next Tests](docs/08-research/open-questions-and-next-tests.md)

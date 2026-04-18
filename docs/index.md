@@ -30,6 +30,7 @@ Use this repository to capture tested local evidence, practical implementation d
 ### Reusable Patterns
 
 - [Kill-Count Driven Sync Pattern](05-patterns/kill-count-driven-sync.md)
+- [Dropship Capacity And Starting Pools](05-patterns/dropship-capacity-and-starting-pools.md)
 
 ### Safety
 
