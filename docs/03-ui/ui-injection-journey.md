@@ -107,6 +107,13 @@ This is a critical lesson for all future custom UI systems:
 
 Rendering and clicking are not enough. Lifecycle cleanup is part of a production-ready UI mod.
 
+Additional note from later banner testing:
+
+- a debug banner attached into the existing UI tree was unreliable
+- a dedicated `ScreenSpaceOverlay` canvas with high sorting order rendered consistently
+
+That makes a separate overlay canvas the safer option for temporary diagnostics, even when the long-term feature should live inside a native page tree.
+
 ## Current Conclusion
 
 The project has now proven all of the following in one line of work:

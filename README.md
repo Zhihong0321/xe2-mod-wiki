@@ -41,12 +41,15 @@ This repo records local implementation evidence and working patterns. The offici
 - [Build And Deploy Workflow](docs/02-setup/build-and-deploy.md)
 - [UI Injection Journey](docs/03-ui/ui-injection-journey.md)
 - [Passive Skill System](docs/04-systems/passive-skill-system.md)
+- [Research Project Overrides](docs/04-systems/research-project-overrides.md)
 - [Save Persistence Findings](docs/04-systems/save-persistence.md)
 - [Kill-Count Driven Sync Pattern](docs/05-patterns/kill-count-driven-sync.md)
 - [Dropship Capacity And Starting Pools](docs/05-patterns/dropship-capacity-and-starting-pools.md)
 - [Startup Safety And Recovery](docs/06-safety/startup-and-recovery.md)
+- [Failure Patterns And Reset Rules](docs/06-safety/failure-patterns-and-reset-rules.md)
 - [UI Component Probe Implementation History](docs/07-implementations/ui-component-probe.md)
 - [Open Questions And Next Tests](docs/08-research/open-questions-and-next-tests.md)
+- [Session Handoff: Personnel Count Reset](docs/08-research/session-handoff-personnel-count-reset.md)
 
 ## Documentation Standards
 
@@ -66,6 +69,8 @@ As of the latest documented progress:
 - passive-skill bonuses apply live
 - the injected soldier-page UI now has explicit cleanup hooks
 - passive state remained `ON` after loading a save in the tested scenario
+- direct research `ProgressPoints` overrides work for near-instant test projects
+- custom research UI text can be fixed with `LocalizableGUID` plus mod-local locale CSV files
 
 ## Scope
 

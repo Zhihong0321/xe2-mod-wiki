@@ -69,3 +69,30 @@ When a feature can be derived from existing persistent game state, prefer:
 over:
 
 - blindly add effect again when a button or event fires
+
+## Stat Cap Interaction
+
+One important follow-up from the Bravery test:
+
+- kill-count-driven sync was correct
+- `DeltaBravery()` by itself was not enough to exceed the base-game `100` cap
+
+Observed behavior:
+
+- Bravery stayed capped at `100` even when kill count kept increasing
+- patching only `Bravery.DefaultMaximum()` was insufficient
+
+Why:
+
+- the entity write path recreated the Bravery stat with `max = 100`
+- clamping still happened when `Artitas.Entity.AddBravery(min, value, max)` ran
+
+Working fix patterns:
+
+- code-mod approach: patch `Artitas.Entity.AddBravery(float, float, float)` and raise the incoming `max` before the stat is written
+- test-harness approach: in the kill-count mod, ensure Bravery is rewritten with `max = 200`, then apply the derived delta through `AddBravery(min, nextValue, nextMax)`
+
+Verified result:
+
+- live test reached `BRAVERY 140`
+- this confirms the sync pattern still works, but stat-cap experiments may also need a write-path patch

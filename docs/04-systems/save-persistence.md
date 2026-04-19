@@ -13,19 +13,23 @@ The passive-skill prototype has now produced the first meaningful evidence that 
 Observed in user testing:
 
 - a passive that was previously toggled `ON` remained `ON` after loading the game
+- a soldier that was assigned a class in `Class System Probe` kept that class after saving, quitting to the main menu, and loading the save
 
-Because the passive UI reflects custom passive state, this strongly suggests that the state path survived save / load in the tested case.
+Because both systems reflect custom soldier-bound state, this strongly suggests that the tested custom-component path survived save / load in both cases.
 
 ## What This Likely Means
 
-The current implementation stores passive state in a custom soldier component:
+The current implementations store custom state in soldier-bound custom components:
 
 - `PassiveSkillStateComponent`
 - `ActiveSkillIds`
+- `SoldierClassStateComponent`
+- `SelectedClassId`
 
 Given the observed behavior, the most likely interpretation is:
 
 - the custom soldier-bound passive state persisted through the save / load path in the tested scenario
+- the custom soldier-bound class state persisted through save, quit to main menu, and load in the tested scenario
 
 That is a major result.
 
@@ -47,6 +51,7 @@ This is not just a menu trick. It is a route toward durable new gameplay structu
 ### Confirmed / Observed
 
 - a previously enabled passive remained visible as enabled after loading
+- a previously assigned class remained set after save, quit to main menu, and load
 
 ### Not Yet Fully Characterized
 
@@ -63,9 +68,10 @@ The next persistence tests should be systematic:
 2. reload and confirm the passive state, stat state, and UI state
 3. disable it, save again, and confirm the off-state persists
 4. enable all three passives and confirm each survives reload
-5. verify soldier switching does not leak state between soldiers
-6. verify a new campaign starts clean
-7. verify injured, transferred, or otherwise changed soldiers still reload cleanly
+5. assign one class and confirm the class state and stat state survive reload
+6. verify soldier switching does not leak state between soldiers
+7. verify a new campaign starts clean
+8. verify injured, transferred, or otherwise changed soldiers still reload cleanly
 
 ## Documentation Rule
 
@@ -74,3 +80,4 @@ Future documentation should avoid claiming "custom components always serialize" 
 The correct current statement is narrower and stronger:
 
 - the passive-state implementation survived save / load in the tested scenario
+- the class-state implementation survived save, quit to main menu, and load in the tested scenario

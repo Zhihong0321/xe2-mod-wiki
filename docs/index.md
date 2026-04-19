@@ -25,6 +25,9 @@ Use this repository to capture tested local evidence, practical implementation d
 
 - [UI Injection Journey](03-ui/ui-injection-journey.md)
 - [Passive Skill System](04-systems/passive-skill-system.md)
+- [Direct Campaign Resource Deltas](04-systems/direct-campaign-resource-deltas.md)
+- [Direct Personnel Backend Command](04-systems/direct-personnel-backend-command.md)
+- [Research Project Overrides](04-systems/research-project-overrides.md)
 - [Save Persistence Findings](04-systems/save-persistence.md)
 
 ### Reusable Patterns
@@ -35,14 +38,17 @@ Use this repository to capture tested local evidence, practical implementation d
 ### Safety
 
 - [Startup Safety And Recovery](06-safety/startup-and-recovery.md)
+- [Failure Patterns And Reset Rules](06-safety/failure-patterns-and-reset-rules.md)
 
 ### Implementation History
 
 - [UI Component Probe Implementation History](07-implementations/ui-component-probe.md)
+- [Class System Probe](07-implementations/class-system-probe.md)
 
 ### Research Backlog
 
 - [Open Questions And Next Tests](08-research/open-questions-and-next-tests.md)
+- [Session Handoff: Personnel Count Reset](08-research/session-handoff-personnel-count-reset.md)
 
 ## Most Important Confirmed Breakthroughs
 
@@ -62,16 +68,19 @@ Confirmed:
 - a custom passive-skill panel can be injected onto the soldier page
 - clicking custom toggles can change soldier state
 - those toggles can apply live stat deltas to the selected soldier
+- a custom class panel can assign a one-way soldier class
+- that class choice can persist through save, quit to main menu, and reload
 
 This is more significant than a balance tweak. It demonstrates that an entirely new system layer can be added on top of existing game flows.
 
 ### 3. Save / Load Behavior Is More Promising Than Expected
 
-Observed in the latest test:
+Observed and confirmed in the latest tests:
 
 - a previously enabled passive remained `ON` after loading the game
+- a soldier class assigned through the class probe remained set after save, quit to main menu, and load
 
-Because the panel UI is driven by custom passive state, this strongly suggests that the tested passive-state data path survived save / load. That is a major milestone, although edge cases still need systematic validation.
+Because both the passive panel and the class probe are driven by custom soldier-bound state, this now provides stronger evidence that the tested custom-component path survived save / load. That is a major milestone, although edge cases still need systematic validation.
 
 ### 4. Lifecycle Cleanup Matters
 
@@ -82,6 +91,23 @@ Confirmed fix:
 - explicit cleanup hooks on `Hide`, `OnTeardown`, and `Destroy`
 - soldier-overview cleanup
 - main-menu reset cleanup
+
+### 5. Research Project Overrides Are Reliable
+
+Confirmed:
+
+- direct `ProgressPoints` overrides work for fast research testing
+- `research_duration0` is not instant
+- custom research text can require explicit `LocalizableGUID` plus locale CSV rows
+
+### 6. Campaign Resources Are Directly Mutable
+
+Confirmed:
+
+- funds can be changed directly through backend entity mutation
+- operation points can be changed directly through backend entity mutation
+- doomsday can be changed directly through backend global-variable mutation
+- the visible geoscape UI reacts to those changes in live play
 
 ## How To Read This Wiki
 
